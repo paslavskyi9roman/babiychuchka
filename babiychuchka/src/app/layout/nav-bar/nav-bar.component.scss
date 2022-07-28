@@ -1,13 +1,14 @@
 .nav-bar {
   background-color: #fff;
-  height: 100%;
+  height: 100vh;
 }
 
 ul {
   width: 20vw;
   padding: 4em;
+  height: 100%;
+
   li {
-    list-style: none;
     margin: 2em;
   }
 }
