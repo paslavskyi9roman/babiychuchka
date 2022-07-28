@@ -6,6 +6,37 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    children: [
+      {
+        path: 'bio',
+        loadChildren: () => import('../modules/bio/bio.module').then((m) => m.BioModule),
+      },
+      {
+        path: 'gallery',
+        loadChildren: () => import('../modules/gallery/gallery.module').then((m) => m.GalleryModule),
+      },
+      {
+        path: 'poetry',
+        loadChildren: () => import('../modules/poetry/poetry.module').then((m) => m.PoetryModule),
+      },
+      {
+        path: 'feed',
+        loadChildren: () => import('../modules/feed/feed.module').then((m) => m.FeedModule),
+      },
+      {
+        path: 'contact',
+        loadChildren: () => import('../modules/contact/contact.module').then((m) => m.ContactModule),
+      },
+      {
+        path: '',
+        redirectTo: '/bio',
+        pathMatch: 'full',
+      },
+      {
+        path: '**',
+        redirectTo: '/bio',
+      },
+    ],
   },
 ];
 
