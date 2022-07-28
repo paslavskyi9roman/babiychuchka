@@ -1,0 +1,20 @@
+.gallery {
+  max-width: 50vw;
+  margin: 0 auto;
+}
+h1 {
+  margin: 4em 0;
+}
+
+.paintings {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  .painting {
+    height: 300px;
+    width: 200px;
+    border: 1px solid #000;
+    background-color: rgb(47, 78, 47);
+    margin: 2rem;
+  }
+}
