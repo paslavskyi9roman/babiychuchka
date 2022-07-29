@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-painting',
@@ -7,8 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PaintingComponent implements OnInit {
   @Input() public painting: any;
+  public id: number;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.id = params['id'];
+    });
+  }
 }
