@@ -4,6 +4,8 @@
   <h1>This is my poetry</h1>
 
   <div class="poetry-list">
-    <app-poem *ngFor="let poem of poetry" class="item" [poem]="poem"></app-poem>
+    <ng-container *ngIf="poetry$ | async as poetry">
+      <app-poem *ngFor="let poem of poetry" class="item" [poem]="poem"></app-poem>
+    </ng-container>
   </div>
 </section>

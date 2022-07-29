@@ -4,6 +4,8 @@
   <h1>Check out my art work</h1>
 
   <div class="paintings">
-    <app-painting *ngFor="let painting of paintings" class="painting" [painting]="painting"> </app-painting>
+    <ng-container *ngIf="paintings$ | async as paintings">
+      <app-painting *ngFor="let painting of paintings" class="painting" [painting]="painting"> </app-painting>
+    </ng-container>
   </div>
 </section>

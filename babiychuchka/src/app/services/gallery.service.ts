@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import { paintingsMock } from '../shared/mock-data/paintings.mock';
 import { Painting } from '../shared/models/painting.model';
@@ -6,11 +7,8 @@ import { Painting } from '../shared/models/painting.model';
   providedIn: 'root',
 })
 export class GalleryService {
-  public paintings: Painting[] = paintingsMock;
+  public paintingsStorage$ = new BehaviorSubject<Painting[]>(paintingsMock);
+  public paintings$ = this.paintingsStorage$.asObservable();
 
   constructor() {}
-
-  public getPaintings() {
-    return this.paintings;
-  }
 }

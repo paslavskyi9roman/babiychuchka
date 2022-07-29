@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { PoetryService } from 'src/app/services/poetry.service';
 import { Painting } from 'src/app/shared/models/painting.model';
 import { Poetry } from 'src/app/shared/models/poetry.model';
@@ -9,11 +10,11 @@ import { Poetry } from 'src/app/shared/models/poetry.model';
   styleUrls: ['./poetry.component.scss'],
 })
 export class PoetryComponent implements OnInit {
-  public poetry: Poetry[];
+  public poetry$: Observable<Poetry[]>;
 
   constructor(private poetryService: PoetryService) {}
 
   public ngOnInit(): void {
-    this.poetry = this.poetryService.getPoetry();
+    this.poetry$ = this.poetryService.poetry$;
   }
 }
