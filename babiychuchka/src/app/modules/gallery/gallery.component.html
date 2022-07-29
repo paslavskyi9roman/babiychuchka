@@ -4,14 +4,6 @@
   <h1>Check out my art work</h1>
 
   <div class="paintings">
-    <div class="painting"></div>
-    <div class="painting"></div>
-    <div class="painting"></div>
-    <div class="painting"></div>
-    <div class="painting"></div>
-    <div class="painting"></div>
-    <div class="painting"></div>
-    <div class="painting"></div>
-    <div class="painting"></div>
+    <app-painting *ngFor="let painting of paintings" class="painting" [painting]="painting"> </app-painting>
   </div>
 </section>

@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
 
+import { poetryMock } from '../shared/mock-data/poetry.mock';
+import { Poetry } from '../shared/models/poetry.model';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PoetryService {
+  public poetry: Poetry[] = poetryMock;
 
-  constructor() { }
+  constructor() {}
+
+  public getPoetry() {
+    return this.poetry;
+  }
 }
