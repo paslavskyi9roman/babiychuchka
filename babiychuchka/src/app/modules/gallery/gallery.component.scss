@@ -13,11 +13,16 @@ h1 {
   .painting {
     height: 300px;
     width: 200px;
-    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 2rem;
     transition: ease-in 0.1s;
     &:hover {
       transform: scale(1.1);
     }
+  }
+  img {
+    width: 100%;
   }
 }

@@ -1,6 +1,6 @@
 .wrapper {
-  background-color: rgb(245, 240, 247);
   display: flex;
+  z-index: 10;
 }
 
 .main {
@@ -10,7 +10,7 @@
 
 .content {
   padding: 4em;
-  max-height: 90vh;
   min-height: 90vh;
+  background-color: rgb(245, 240, 247);
   overflow-y: scroll;
 }

@@ -1,1 +1,10 @@
-
+<section class="wrapper">
+  <h1>{{ painting.title }}</h1>
+  <div class="painting">
+    <img [src]="painting.url" alt="painting.title" />
+    <div class="text">
+      <p class="description">{{ painting.description }}</p>
+      <p>{{ painting.available }}</p>
+    </div>
+  </div>
+</section>
