@@ -3,8 +3,13 @@
   <div class="painting">
     <img [src]="painting.url" alt="painting.title" />
     <div class="text">
-      <p class="description">{{ painting.description }}</p>
-      <p>{{ painting.available }}</p>
+      <div>
+        <p class="description">{{ painting.description }}</p>
+        <p>{{ painting.available ? 'Avaible' : 'Sold' }}</p>
+      </div>
+      <div>
+        <p class="contact-me">In case you have any questions or interested in a particular artwork please contact me</p>
+      </div>
     </div>
   </div>
 </section>

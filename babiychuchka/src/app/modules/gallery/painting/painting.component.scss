@@ -5,6 +5,9 @@
     display: flex;
     .text {
       margin-left: 4em;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       .description {
         margin-bottom: 1em;
       }
@@ -17,4 +20,9 @@ h1 {
 
 img {
   width: 700px;
+}
+
+.contact-me {
+  width: 10vw;
+  font-size: 14px;
 }

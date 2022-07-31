@@ -12,7 +12,7 @@ export const paintingsMock: Painting[] = [
     id: '2',
     title: 'first one',
     description: 'my first painting',
-    available: false,
+    available: true,
     url: 'https://www.worldhistory.org/img/r/p/500x600/15460.png?v=1647612336',
   },
   {
@@ -26,7 +26,7 @@ export const paintingsMock: Painting[] = [
     id: '4',
     title: 'first one',
     description: 'my first painting',
-    available: false,
+    available: true,
     url: 'https://mymodernmet.com/wp/wp-content/uploads/2021/07/famous-portraits-17.webp',
   },
   {
