@@ -1,14 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-poem',
   templateUrl: './poem.component.html',
   styleUrls: ['./poem.component.scss'],
 })
-export class PoemComponent implements OnInit {
+export class PoemComponent {
   @Input() public poem: any = {};
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }
