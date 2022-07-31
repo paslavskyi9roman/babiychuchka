@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, filter, map, Observable, take, toArray } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 import { paintingsMock } from '../shared/mock-data/paintings.mock';
 import { Painting } from '../shared/models/painting.model';
