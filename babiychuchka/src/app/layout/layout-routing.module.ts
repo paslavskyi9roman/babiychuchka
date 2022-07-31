@@ -29,12 +29,12 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/bio',
+        redirectTo: '/gallery',
         pathMatch: 'full',
       },
       {
         path: '**',
-        redirectTo: '/bio',
+        redirectTo: '/gallery',
       },
     ],
   },

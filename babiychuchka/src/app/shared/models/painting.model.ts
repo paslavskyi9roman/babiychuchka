@@ -1,6 +1,7 @@
 export interface Painting {
-  id: number;
+  id: string;
   title: string;
   description: string;
   available: boolean;
+  url: string;
 }

@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { GalleryService } from 'src/app/services/gallery.service';
+import { Painting } from 'src/app/shared/models/painting.model';
 
 @Component({
   selector: 'app-painting',
@@ -7,14 +9,16 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./painting.component.scss'],
 })
 export class PaintingComponent implements OnInit {
-  @Input() public painting: any;
-  public id: number;
+  public painting: Painting;
+  public paintingId: string | number;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private galleryService: GalleryService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      this.id = params['id'];
+    this.route.paramMap.subscribe((params: ParamMap) => (this.paintingId = Number(params.get('id'))));
+
+    this.galleryService.getPaintinById(this.paintingId + '').subscribe((v) => {
+      this.painting = Object.assign({}, ...v);
     });
   }
 }

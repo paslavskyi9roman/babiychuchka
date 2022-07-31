@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, filter, map, Observable, take, toArray } from 'rxjs';
 
 import { paintingsMock } from '../shared/mock-data/paintings.mock';
 import { Painting } from '../shared/models/painting.model';
@@ -11,4 +11,8 @@ export class GalleryService {
   public paintings$ = this.paintingsStorage$.asObservable();
 
   constructor() {}
+
+  public getPaintinById(id: string): Observable<Painting[]> {
+    return this.paintings$.pipe(map((painting) => painting.filter((el) => el.id === id)));
+  }
 }

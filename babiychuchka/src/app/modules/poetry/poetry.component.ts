@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Observable } from 'rxjs';
+
 import { PoetryService } from 'src/app/services/poetry.service';
-import { Painting } from 'src/app/shared/models/painting.model';
 import { Poetry } from 'src/app/shared/models/poetry.model';
 
 @Component({

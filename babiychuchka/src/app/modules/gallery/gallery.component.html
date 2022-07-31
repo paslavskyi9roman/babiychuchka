@@ -5,7 +5,9 @@
 
   <div class="paintings">
     <ng-container *ngIf="paintings$ | async as paintings">
-      <app-painting *ngFor="let painting of paintings" class="painting" [painting]="painting"> </app-painting>
+      <div [routerLink]="[painting.id]" *ngFor="let painting of paintings" class="painting">
+        <img [src]="painting.url" alt="painting.title" />
+      </div>
     </ng-container>
   </div>
 </section>
