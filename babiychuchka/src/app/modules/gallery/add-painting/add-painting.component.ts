@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { GalleryService } from 'src/app/services/gallery.service';
 
 @Component({
   selector: 'app-add-painting',
@@ -9,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class AddPaintingComponent implements OnInit {
   paintingForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private galleryService: GalleryService) {}
 
   ngOnInit(): void {
     this.paintingForm = this.fb.group({
@@ -19,10 +20,12 @@ export class AddPaintingComponent implements OnInit {
     });
   }
 
-  onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid);
-    console.log(form.value.title);
-    console.log(form.value.description);
-    console.log(form.value.url);
+  onSubmit() {
+    if (this.paintingForm.invalid) {
+      return;
+    }
+    const newPainting = this.paintingForm.value;
+    newPainting.id = Math.floor(Math.random() * 10000) + 1;
+    this.galleryService.addPainting(newPainting);
   }
 }
