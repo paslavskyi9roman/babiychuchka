@@ -1,1 +1,12 @@
-<p>add-painting works!</p>
+<form [formGroup]="paintingForm" (ngSubmit)="onSubmit(paintingForm)">
+  <div>
+    <input formControlName="title" placeholder="Your title" />
+  </div>
+  <div>
+    <input formControlName="description" placeholder="Your description" />
+  </div>
+  <div>
+    <input formControlName="url" placeholder="Your url" />
+  </div>
+  <button type="submit">Add painting</button>
+</form>
