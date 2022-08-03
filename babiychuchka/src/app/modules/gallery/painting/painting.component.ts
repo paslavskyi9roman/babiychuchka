@@ -10,15 +10,23 @@ import { Painting } from 'src/app/shared/models/painting.model';
 })
 export class PaintingComponent implements OnInit {
   public painting: Painting;
-  public paintingId: string | number;
+  public paintingId: string;
 
   constructor(private galleryService: GalleryService, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe((params: ParamMap) => (this.paintingId = Number(params.get('id'))));
+  public ngOnInit(): void {
+    this.galleryService.getPaintings();
+    this.getPaintingId();
+    this.getPaintinById(this.paintingId);
+  }
 
-    this.galleryService.getPaintinById(this.paintingId + '').subscribe((v) => {
-      this.painting = Object.assign({}, ...v);
+  public getPaintingId(): void {
+    this.route.paramMap.subscribe((params: ParamMap) => (this.paintingId = String(params.get('id'))));
+  }
+
+  public getPaintinById(id: string): void {
+    this.galleryService.getPaintinById(id).subscribe((painting) => {
+      this.painting = Object.assign({}, ...painting);
     });
   }
 }

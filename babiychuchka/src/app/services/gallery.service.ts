@@ -25,7 +25,7 @@ export class GalleryService {
     return this.paintings$.pipe(map((painting) => painting.filter((el) => el.id === id)));
   }
 
-  public addPainting(painting: Painting) {
+  public addPainting(painting: Painting): void {
     this.paintings$.pipe(take(1)).subscribe((paintings) => {
       this.paintingsStorage$.next([...paintings, painting]);
     });
