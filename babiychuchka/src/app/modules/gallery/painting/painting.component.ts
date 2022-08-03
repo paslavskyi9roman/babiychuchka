@@ -14,8 +14,9 @@ export class PaintingComponent implements OnInit {
 
   constructor(private galleryService: GalleryService, private route: ActivatedRoute) {}
 
-  public ngOnInit(): void {
+  public ngOnInit() {
     this.galleryService.getPaintings();
+
     this.getPaintingId();
     this.getPaintinById(this.paintingId);
   }

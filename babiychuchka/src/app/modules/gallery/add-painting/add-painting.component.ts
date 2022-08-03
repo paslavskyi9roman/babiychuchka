@@ -26,6 +26,7 @@ export class AddPaintingComponent implements OnInit {
     }
     const newPainting = this.paintingForm.value;
     newPainting.id = Math.floor(Math.random() * 10000) + 1;
+    newPainting.available = true;
     this.galleryService.addPainting(newPainting);
   }
 }

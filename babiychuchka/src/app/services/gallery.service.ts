@@ -26,8 +26,11 @@ export class GalleryService {
   }
 
   public addPainting(painting: Painting): void {
-    this.paintings$.pipe(take(1)).subscribe((paintings) => {
-      this.paintingsStorage$.next([...paintings, painting]);
+    this.http.post<{ message: string }>('http://localhost:3000/api/paintings', painting).subscribe((data) => {
+      this.paintings$.pipe(take(1)).subscribe((data) => {
+        this.paintingsStorage$.next([...data, painting]);
+      });
+      this.getPaintings();
     });
   }
 }
