@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { map, Observable, Subject, take } from 'rxjs';
 
 import { Painting } from '../shared/models/painting.model';

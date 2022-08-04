@@ -15,6 +15,8 @@ export class PoemComponent implements OnInit {
   constructor(private poetryService: PoetryService, private route: ActivatedRoute) {}
 
   public ngOnInit(): void {
+    this.poetryService.getPoetry();
+
     this.getPoemId();
     this.getPoemById(this.poemId);
   }
@@ -24,7 +26,7 @@ export class PoemComponent implements OnInit {
   }
 
   public getPoemById(id: string): void {
-    this.poetryService.getPaintinById(id).subscribe((poem) => {
+    this.poetryService.getPoemById(id).subscribe((poem) => {
       this.poem = Object.assign({}, ...poem);
     });
   }

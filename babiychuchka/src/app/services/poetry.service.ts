@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
-import { poetryMock } from '../shared/mock-data/poetry.mock';
+import { map, Observable, Subject } from 'rxjs';
+
 import { Poetry } from '../shared/models/poetry.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PoetryService {
-  public poetryStorage$ = new BehaviorSubject<Poetry[]>(poetryMock);
+  public poetryStorage$ = new Subject<Poetry[]>();
   public poetry$ = this.poetryStorage$.asObservable();
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  public getPaintinById(id: string): Observable<Poetry[]> {
+  public getPoetry() {
+    this.http.get<{ message: string; poetry: Poetry[] }>('http://localhost:3000/api/poetry').subscribe((data) => {
+      this.poetryStorage$.next([...data.poetry]);
+    });
+  }
+
+  public getPoemById(id: string): Observable<Poetry[]> {
     return this.poetry$.pipe(map((poem) => poem.filter((el) => el.id === id)));
   }
 }
