@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
+const Painting = require('./models/Painting');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -13,7 +15,13 @@ app.use((req, res, next) => {
 });
 
 app.post('/api/paintings', (req, res, next) => {
-  const painting = req.body;
+  const painting = new Painting({
+    title: req.body.title,
+    id: req.body.id,
+    description: req.body.description,
+    url: req.body.url,
+    available: req.body.available,
+  });
   console.log(painting);
   res.status(201).json({
     message: 'Painting added successfully',
@@ -24,9 +32,9 @@ app.get('/api/paintings', (req, res, next) => {
   const paintings = [
     {
       id: '1',
-      title: 'first one',
+      title: 'Da Vinci',
       description: 'my first painting',
-      available: false,
+      available: true,
       url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1200px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
     },
     {

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-let Poetry = new Schema(
+const PoetrySchema = mongoose.Schema(
   {
     id: {
       type: String,
@@ -20,4 +19,4 @@ let Poetry = new Schema(
     collection: 'poems',
   }
 );
-module.exports = mongoose.model('Poetry', Poetry);
+module.exports = mongoose.model('Poetry', PoetrySchema);
