@@ -5,7 +5,10 @@
 
   <div class="poetry-list">
     <ng-container *ngIf="poetry$ | async as poetry">
-      <app-poem [routerLink]="[poem.id]" *ngFor="let poem of poetry" class="item" [poem]="poem"></app-poem>
+      <div [routerLink]="[poem.id]" *ngFor="let poem of poetry" class="item">
+        <h3>{{ poem.title }}</h3>
+        <p>{{ poem.text }}</p>
+      </div>
     </ng-container>
   </div>
 </section>
