@@ -6,7 +6,7 @@
   <div class="poetry-list">
     <ng-container *ngIf="poetry$ | async as poetry">
       <div [routerLink]="[poem.id]" *ngFor="let poem of poetry" class="item">
-        <h3>{{ poem.title }}</h3>
+        <h2 class="title">{{ poem.title }}</h2>
         <p>{{ poem.text }}</p>
       </div>
     </ng-container>
