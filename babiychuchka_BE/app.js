@@ -1,9 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express();
+const mongoose = require('mongoose');
 
 const Painting = require('./models/Painting');
 
+mongoose
+  .connect('mongodb+srv://@cluster0.hc5onky.mongodb.net/babiychuchka?retryWrites=true&w=majority')
+  .then(() => {
+    console.log('Connected to database!');
+  })
+  .catch(() => {
+    console.log('Connection failed!');
+  });
+
+const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -32,38 +42,94 @@ app.get('/api/paintings', (req, res, next) => {
   const paintings = [
     {
       id: '1',
-      title: 'Da Vinci',
+      title: 'first one',
       description: 'my first painting',
       available: true,
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1200px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
+      url: 'https://i.imgur.com/aoKy5Kz.jpeg',
     },
     {
       id: '2',
       title: 'first one',
       description: 'my first painting',
       available: true,
-      url: 'https://www.worldhistory.org/img/r/p/500x600/15460.png?v=1647612336',
+      url: 'https://i.imgur.com/kL2e54i.jpeg',
     },
     {
       id: '3',
       title: 'first one',
       description: 'my first painting',
       available: false,
-      url: 'https://fadmagazine.com/wp-content/uploads/Screen-Shot-2021-04-20-at-14.37.11.png',
+      url: 'https://i.imgur.com/7NzhnpK.jpeg',
     },
     {
       id: '4',
       title: 'first one',
       description: 'my first painting',
       available: true,
-      url: 'https://mymodernmet.com/wp/wp-content/uploads/2021/07/famous-portraits-17.webp',
+      url: 'https://i.imgur.com/zKpAcaY.jpg',
     },
     {
       id: '5',
       title: 'first one',
       description: 'my first painting',
       available: false,
-      url: 'https://i.pinimg.com/originals/c9/59/93/c95993eee375294d9a80abf1c5e6e989.jpg',
+      url: 'https://i.imgur.com/5YVm92y.jpg',
+    },
+    {
+      id: '6',
+      title: 'asd asd adfasf',
+      description: 'my first painting',
+      available: true,
+      url: 'https://i.imgur.com/C1Tiu0P.jpg',
+    },
+    {
+      id: '7',
+      title: 'first one',
+      description: 'my first painting',
+      available: true,
+      url: 'https://i.imgur.com/HJSVFfA.jpg',
+    },
+    {
+      id: '8',
+      title: 'first one',
+      description: 'my first painting',
+      available: false,
+      url: 'https://i.imgur.com/ofLOvTf.jpg',
+    },
+    {
+      id: '9',
+      title: 'first one',
+      description: 'my first painting',
+      available: true,
+      url: 'https://i.imgur.com/2ZUEcSY.jpg',
+    },
+    {
+      id: '10',
+      title: 'first one',
+      description: 'my first painting',
+      available: false,
+      url: 'https://i.imgur.com/JKxiVaz.jpg',
+    },
+    {
+      id: '11',
+      title: 'first one',
+      description: 'my first painting',
+      available: false,
+      url: 'https://i.imgur.com/E9uYhBi.jpg',
+    },
+    {
+      id: '12',
+      title: 'first one',
+      description: 'my first painting',
+      available: true,
+      url: 'https://i.imgur.com/gdS4iMz.jpg',
+    },
+    {
+      id: '13',
+      title: 'first one',
+      description: 'my first painting',
+      available: false,
+      url: 'https://i.imgur.com/Sk1jMo6.jpg',
     },
   ];
   res.status(200).json({
