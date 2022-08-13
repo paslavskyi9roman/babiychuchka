@@ -29,7 +29,7 @@ app.post('/api/paintings', (req, res, next) => {
     title: req.body.title,
     id: req.body.id,
     description: req.body.description,
-    url: req.body.url,
+    imgUrl: req.body.imgUrl,
     available: req.body.available,
   });
   painting.save();

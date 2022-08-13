@@ -16,7 +16,7 @@ export class AddPaintingComponent implements OnInit {
     this.paintingForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      url: ['', Validators.required],
+      imgUrl: ['', Validators.required],
     });
   }
 

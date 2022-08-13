@@ -18,7 +18,7 @@ const paintingSchema = mongoose.Schema(
       type: Boolean,
       required: true,
     },
-    url: {
+    imgUrl: {
       type: String,
     },
   },
