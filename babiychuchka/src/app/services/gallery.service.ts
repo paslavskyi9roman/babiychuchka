@@ -30,7 +30,7 @@ export class GalleryService {
       this.paintings$.pipe(take(1)).subscribe((data) => {
         this.paintingsStorage$.next([...data, painting]);
       });
-      this.getPaintings();
     });
+    this.getPaintings();
   }
 }
