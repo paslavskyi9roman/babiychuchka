@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { GalleryService } from 'src/app/services/gallery.service';
 import { Painting } from 'src/app/shared/models/painting.model';
 
@@ -12,7 +12,7 @@ export class PaintingComponent implements OnInit {
   public painting: Painting;
   public paintingId: string;
 
-  constructor(private galleryService: GalleryService, private route: ActivatedRoute) {}
+  constructor(private galleryService: GalleryService, private route: ActivatedRoute, private router: Router) {}
 
   public ngOnInit() {
     this.galleryService.getPaintings();
@@ -29,5 +29,10 @@ export class PaintingComponent implements OnInit {
     this.galleryService.getPaintinById(id).subscribe((painting) => {
       this.painting = Object.assign({}, ...painting);
     });
+  }
+
+  public onDelete(): void {
+    this.galleryService.deletePaintings(this.paintingId);
+    this.router.navigate(['/gallery'], { relativeTo: this.route });
   }
 }

@@ -47,6 +47,12 @@ app.get('/api/paintings', (req, res, next) => {
   });
 });
 
+app.delete('/api/paintings/:id', (req, res, next) => {
+  Painting.deleteOne({ id: req.params.id }).then((result) => {
+    res.status(200).json({ message: 'Painting deleted' });
+  });
+});
+
 app.get('/api/poetry', (req, res, next) => {
   const poetry = [
     {

@@ -33,4 +33,10 @@ export class GalleryService {
     });
     this.getPaintings();
   }
+
+  public deletePaintings(paintingId: string): void {
+    this.http.delete('http://localhost:3000/api/paintings/' + paintingId).subscribe(() => {
+      this.getPaintings();
+    });
+  }
 }
