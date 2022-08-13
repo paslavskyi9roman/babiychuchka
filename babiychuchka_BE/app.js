@@ -32,109 +32,18 @@ app.post('/api/paintings', (req, res, next) => {
     url: req.body.url,
     available: req.body.available,
   });
-  console.log(painting);
+  painting.save();
   res.status(201).json({
     message: 'Painting added successfully',
   });
 });
 
 app.get('/api/paintings', (req, res, next) => {
-  const paintings = [
-    {
-      id: '1',
-      title: 'first one',
-      description: 'my first painting',
-      available: true,
-      url: 'https://i.imgur.com/aoKy5Kz.jpeg',
-    },
-    {
-      id: '2',
-      title: 'first one',
-      description: 'my first painting',
-      available: true,
-      url: 'https://i.imgur.com/kL2e54i.jpeg',
-    },
-    {
-      id: '3',
-      title: 'first one',
-      description: 'my first painting',
-      available: false,
-      url: 'https://i.imgur.com/7NzhnpK.jpeg',
-    },
-    {
-      id: '4',
-      title: 'first one',
-      description: 'my first painting',
-      available: true,
-      url: 'https://i.imgur.com/zKpAcaY.jpg',
-    },
-    {
-      id: '5',
-      title: 'first one',
-      description: 'my first painting',
-      available: false,
-      url: 'https://i.imgur.com/5YVm92y.jpg',
-    },
-    {
-      id: '6',
-      title: 'asd asd adfasf',
-      description: 'my first painting',
-      available: true,
-      url: 'https://i.imgur.com/C1Tiu0P.jpg',
-    },
-    {
-      id: '7',
-      title: 'first one',
-      description: 'my first painting',
-      available: true,
-      url: 'https://i.imgur.com/HJSVFfA.jpg',
-    },
-    {
-      id: '8',
-      title: 'first one',
-      description: 'my first painting',
-      available: false,
-      url: 'https://i.imgur.com/ofLOvTf.jpg',
-    },
-    {
-      id: '9',
-      title: 'first one',
-      description: 'my first painting',
-      available: true,
-      url: 'https://i.imgur.com/2ZUEcSY.jpg',
-    },
-    {
-      id: '10',
-      title: 'first one',
-      description: 'my first painting',
-      available: false,
-      url: 'https://i.imgur.com/JKxiVaz.jpg',
-    },
-    {
-      id: '11',
-      title: 'first one',
-      description: 'my first painting',
-      available: false,
-      url: 'https://i.imgur.com/E9uYhBi.jpg',
-    },
-    {
-      id: '12',
-      title: 'first one',
-      description: 'my first painting',
-      available: true,
-      url: 'https://i.imgur.com/gdS4iMz.jpg',
-    },
-    {
-      id: '13',
-      title: 'first one',
-      description: 'my first painting',
-      available: false,
-      url: 'https://i.imgur.com/Sk1jMo6.jpg',
-    },
-  ];
-  res.status(200).json({
-    message: 'Paintings fetched successfully!',
-    paintings: paintings,
+  Painting.find().then((documents) => {
+    res.status(200).json({
+      message: 'Paintings fetched successfully!',
+      paintings: documents,
+    });
   });
 });
 
