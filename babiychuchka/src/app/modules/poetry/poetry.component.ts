@@ -16,6 +16,7 @@ export class PoetryComponent implements OnInit {
   constructor(private poetryService: PoetryService) {}
 
   public ngOnInit(): void {
+    this.poetryService.getPoetry();
     this.poetry$ = this.poetryService.poetry$;
   }
 }

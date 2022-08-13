@@ -1,5 +1,5 @@
 export interface Poetry {
-  id: number;
+  id: string;
   title: string;
   text: string;
   date: string;

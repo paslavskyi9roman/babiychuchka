@@ -1,12 +1,11 @@
 <section class="gallery">
-  <p>gallery</p>
-
+  <!-- <app-add-painting></app-add-painting> -->
   <h1>Check out my art work</h1>
 
   <div class="paintings">
     <ng-container *ngIf="paintings$ | async as paintings">
       <div [routerLink]="[painting.id]" *ngFor="let painting of paintings" class="painting">
-        <img [src]="painting.url" alt="painting.title" />
+        <img [src]="painting.imgUrl" alt="painting.title" />
       </div>
     </ng-container>
   </div>

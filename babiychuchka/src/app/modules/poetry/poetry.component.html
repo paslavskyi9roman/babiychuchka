@@ -1,11 +1,12 @@
 <section class="poetry">
-  <p>poetry</p>
-
   <h1>This is my poetry</h1>
 
   <div class="poetry-list">
     <ng-container *ngIf="poetry$ | async as poetry">
-      <app-poem *ngFor="let poem of poetry" class="item" [poem]="poem"></app-poem>
+      <div [routerLink]="[poem.id]" *ngFor="let poem of poetry" class="item">
+        <h2 class="title">{{ poem.title }}</h2>
+        <p>{{ poem.text }}</p>
+      </div>
     </ng-container>
   </div>
 </section>
