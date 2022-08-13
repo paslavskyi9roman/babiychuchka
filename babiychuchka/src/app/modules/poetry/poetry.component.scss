@@ -1,13 +1,23 @@
 .poetry {
   margin: 0 auto;
   max-width: 50vw;
-}
-
-h1 {
-  margin: 4rem 0;
-}
-
-.item {
-  margin: 2rem 0;
-  width: 400px;
+  h1 {
+    margin: 1em 1em 2em;
+  }
+  
+  .item {
+    margin: 2rem 0;
+    width: 300px;
+    margin: 2em;
+  }
+  
+  .poetry-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .title {
+    margin-bottom: 1em;
+  }
+  
 }

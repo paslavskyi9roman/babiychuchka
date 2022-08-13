@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
@@ -8,6 +9,6 @@ import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [LayoutComponent, NavBarComponent, FooterComponent],
-  imports: [CommonModule, LayoutRoutingModule],
+  imports: [CommonModule, LayoutRoutingModule, FormsModule, ReactiveFormsModule],
 })
 export class LayoutModule {}

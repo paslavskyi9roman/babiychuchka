@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 h1 {
-  margin: 4em 0;
+  margin: 1em 1em 2em;
 }
 
 .paintings {
@@ -13,7 +13,6 @@ h1 {
   .painting {
     width: 200px;
     display: flex;
-    justify-content: center;
     align-items: center;
     margin: 2rem;
     transition: ease-in 0.1s;

@@ -1,14 +1,33 @@
 .nav-bar {
   background-color: #fff;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+ 
+}
+
+.active-link {
+  font-weight: 600;
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    margin-left: 2em;
+    border: 2px solid #000;
+    transform: rotate(45deg);
+  }
 }
 
 ul {
-  padding: 4em;
-  height: 100%;
-
+  padding: 60px 70px;
   li {
-    margin: 2em;
+    margin: 2em 0;
+  }
+
+  .logo {
+    margin-bottom: 50px;
   }
 }
 

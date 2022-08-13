@@ -1,0 +1,12 @@
+<form [formGroup]="paintingForm" (ngSubmit)="onSubmit()">
+  <div>
+    <input formControlName="title" placeholder="Your title" />
+  </div>
+  <div>
+    <input formControlName="description" placeholder="Your description" />
+  </div>
+  <div>
+    <input formControlName="imgUrl" placeholder="Your url" />
+  </div>
+  <button type="submit">Add painting</button>
+</form>
