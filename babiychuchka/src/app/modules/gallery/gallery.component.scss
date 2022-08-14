@@ -6,6 +6,10 @@ h1 {
   margin: 1em 1em 2em;
 }
 
+.common-btn {
+  margin-left: 32px;
+}
+
 .paintings {
   width: 100%;
   display: flex;
@@ -35,4 +39,19 @@ h1 {
     margin: 1em 0;
     width: 300px;
   }
+}
+
+.drawer {
+  height: 100vh;
+  width: 30%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  right: -30%;
+  transition: ease-in 0.3s;
+  padding: 60px 70px;
+}
+
+.openDrawer {
+  transform: translateX(-70%);
 }

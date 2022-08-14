@@ -1,6 +1,6 @@
 <section class="gallery">
-  <!-- <app-add-painting></app-add-painting> -->
   <h1>Check out my art work</h1>
+  <button class="common-btn" (click)="toggleDrawer()">{{ drawerState ? 'close' : 'add painting' }}</button>
 
   <div class="paintings">
     <ng-container *ngIf="paintings$ | async as paintings">
@@ -10,3 +10,7 @@
     </ng-container>
   </div>
 </section>
+
+<div [ngClass]="{ openDrawer: drawerState }" class="drawer">
+  <app-add-painting></app-add-painting>
+</div>

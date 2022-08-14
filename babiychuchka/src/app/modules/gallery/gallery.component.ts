@@ -10,11 +10,16 @@ import { Painting } from 'src/app/shared/models/painting.model';
 })
 export class GalleryComponent implements OnInit {
   public paintings$: Observable<Painting[]>;
+  public drawerState = false;
 
   constructor(private galleryService: GalleryService) {}
 
   public ngOnInit(): void {
     this.galleryService.getPaintings();
     this.paintings$ = this.galleryService.paintings$;
+  }
+
+  public toggleDrawer(): void {
+    this.drawerState = !this.drawerState;
   }
 }

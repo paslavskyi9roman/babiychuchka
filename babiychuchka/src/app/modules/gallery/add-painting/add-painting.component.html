@@ -1,4 +1,5 @@
 <form [formGroup]="paintingForm" (ngSubmit)="onSubmit()">
+  <p>Add a new painting</p>
   <div>
     <input formControlName="title" placeholder="Your title" />
   </div>
@@ -8,5 +9,5 @@
   <div>
     <input formControlName="imgUrl" placeholder="Your url" />
   </div>
-  <button type="submit">Add painting</button>
+  <button class="common-btn" type="submit">Add painting</button>
 </form>
