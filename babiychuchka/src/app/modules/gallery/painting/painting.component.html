@@ -1,6 +1,5 @@
 <section class="wrapper">
   <p routerLink="/gallery">⯇ back</p>
-  <!-- <button (click)="onDelete()">delete</button> -->
   <h1>{{ painting.title }}</h1>
   <div class="painting">
     <img [src]="painting.imgUrl" alt="painting.title" />
@@ -8,6 +7,7 @@
       <div>
         <p>{{ painting.available ? 'Avaible' : 'Sold' }}</p>
         <p class="description">{{ painting.description }}</p>
+        <button class="common-btn" (click)="onDelete()">delete</button>
       </div>
       <div>
         <p class="contact-me">In case you have any questions or interested in a particular artwork please contact me</p>
