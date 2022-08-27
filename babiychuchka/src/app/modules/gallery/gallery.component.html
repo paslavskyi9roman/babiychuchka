@@ -10,7 +10,6 @@
     </ng-container>
   </div>
 </section>
-
-<div [ngClass]="{ openDrawer: drawerState }" class="drawer">
+<div [class.openDrawer]="drawerState" class="drawer">
   <app-add-painting></app-add-painting>
 </div>
