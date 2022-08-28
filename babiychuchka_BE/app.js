@@ -2,7 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const Painting = require('./models/Painting');
+const paintingsRoutes = require('./routes/paintings.routes');
+
+const app = express();
 
 mongoose
   .connect('')
@@ -13,57 +15,14 @@ mongoose
     console.log('Connection failed!');
   });
 
-const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
   next();
-});
-
-app.post('/api/paintings', (req, res, next) => {
-  const painting = new Painting({
-    title: req.body.title,
-    id: req.body.id,
-    description: req.body.description,
-    imgUrl: req.body.imgUrl,
-    available: req.body.available,
-  });
-  painting.save();
-  res.status(201).json({
-    message: 'Painting added successfully',
-  });
-});
-
-app.put('/api/paintings/:id', (req, res, next) => {
-  const painting = new Painting({
-    title: req.body.title,
-    description: req.body.description,
-    imgUrl: req.body.imgUrl,
-    available: req.body.available,
-  });
-  Painting.updateOne({ id: req.params.id }, painting).then((result) => {
-    console.log(result);
-    res.status(200).json({ message: 'Painting updated successfully' });
-  });
-});
-
-app.get('/api/paintings', (req, res, next) => {
-  Painting.find().then((documents) => {
-    res.status(200).json({
-      message: 'Paintings fetched successfully!',
-      paintings: documents,
-    });
-  });
-});
-
-app.delete('/api/paintings/:id', (req, res, next) => {
-  Painting.deleteOne({ id: req.params.id }).then((result) => {
-    res.status(200).json({ message: 'Painting deleted' });
-  });
 });
 
 app.get('/api/poetry', (req, res, next) => {
@@ -98,5 +57,7 @@ app.get('/api/poetry', (req, res, next) => {
     poetry: poetry,
   });
 });
+
+app.use('/api/paintings', paintingsRoutes);
 
 module.exports = app;
