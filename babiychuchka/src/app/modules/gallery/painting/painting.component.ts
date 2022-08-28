@@ -16,20 +16,13 @@ export class PaintingComponent implements OnInit {
   constructor(private galleryService: GalleryService, private route: ActivatedRoute, private router: Router) {}
 
   public ngOnInit() {
-    this.galleryService.getPaintings();
     this.getPaintingId();
-    this.getPaintinById(this.paintingId);
+    this.painting = this.galleryService.getPaintinById(this.paintingId) as Painting;
   }
 
   public getPaintingId(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.paintingId = String(params.get('id'));
-    });
-  }
-
-  public getPaintinById(id: string): void {
-    this.galleryService.getPaintinById(id).subscribe((painting) => {
-      this.painting = Object.assign({}, ...painting);
     });
   }
 

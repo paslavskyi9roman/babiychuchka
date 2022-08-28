@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable, Subject, take } from 'rxjs';
+import { map, Subject } from 'rxjs';
 
 import { Painting } from '../shared/models/painting.model';
 
@@ -37,8 +37,8 @@ export class GalleryService {
       });
   }
 
-  public getPaintinById(id: string): Observable<Painting[]> {
-    return this.paintings$.pipe(map((painting) => painting.filter((el) => el.id === id)));
+  public getPaintinById(id: string) {
+    return { ...this.paintings.find((p) => p.id === id) };
   }
 
   public addPainting(painting: Painting): void {
@@ -55,6 +55,10 @@ export class GalleryService {
   }
 
   public deletePainting(paintingId: string): void {
-    this.http.delete(`${this.url}/paintings` + paintingId).subscribe(() => {});
+    this.http.delete(`${this.url}/paintings` + paintingId).subscribe(() => {
+      const updatedPaintings = this.paintings.filter((painting) => painting.id !== paintingId);
+      this.paintings = updatedPaintings;
+      this.paintingsStorage$.next([...this.paintings]);
+    });
   }
 }
