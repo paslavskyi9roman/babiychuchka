@@ -15,7 +15,7 @@ const routes: Routes = [
     component: AddPaintingComponent,
   },
   {
-    path: 'edit-painting/:id',
+    path: 'edit/:id',
     component: EditPaintingComponent,
   },
   {

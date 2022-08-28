@@ -11,6 +11,7 @@ import { Painting } from 'src/app/shared/models/painting.model';
 export class PaintingComponent implements OnInit {
   public painting: Painting;
   public paintingId: string;
+  public drawerState = false;
 
   constructor(private galleryService: GalleryService, private route: ActivatedRoute, private router: Router) {}
 
@@ -31,8 +32,19 @@ export class PaintingComponent implements OnInit {
     });
   }
 
+  public confirmDelete(): void {
+    let confirmDelete = confirm('are you sure wanna delete this painting?');
+    if (confirmDelete) {
+      this.onDelete();
+    }
+  }
+
   public onDelete(): void {
     this.galleryService.deletePaintings(this.paintingId);
     this.router.navigate(['/gallery'], { relativeTo: this.route });
+  }
+
+  public toggleDrawer(): void {
+    this.drawerState = !this.drawerState;
   }
 }

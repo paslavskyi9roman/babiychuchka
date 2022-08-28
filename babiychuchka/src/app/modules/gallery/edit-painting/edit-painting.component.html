@@ -1,1 +1,12 @@
-<p>edit-painting works!</p>
+<p>edit painting</p>
+
+<form action="">
+  <input type="text" [value]="painting.title" />
+  <input type="text" [value]="painting.description" />
+  <input type="text" [value]="painting.imgUrl" />
+  <input type="text" [value]="painting.available" />
+  <div class="buttons">
+    <button (click)="editPainting(painting)" class="common-btn">edit</button>
+    <button class="common-btn cancel">cancel</button>
+  </div>
+</form>

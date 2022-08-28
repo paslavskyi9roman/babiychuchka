@@ -1,0 +1,27 @@
+form {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+}
+form > * {
+  margin: 1em 0;
+}
+
+input {
+  padding: 5px;
+  width: 300px;
+}
+
+button {
+  width: 120px;
+}
+
+.buttons {
+  display: flex;
+}
+
+.cancel {
+  color: red;
+  border-color: red;
+  margin-left: 1em;
+}

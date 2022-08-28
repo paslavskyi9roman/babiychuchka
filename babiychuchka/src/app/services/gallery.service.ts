@@ -33,6 +33,12 @@ export class GalleryService {
     this.getPaintings();
   }
 
+  public editPainting(painting: Painting): void {
+    this.http.put(`${this.url}/paintings` + painting.id, painting).subscribe((response) => {
+      console.log(response);
+    });
+  }
+
   public deletePaintings(paintingId: string): void {
     this.http.delete(`${this.url}/paintings` + paintingId).subscribe(() => {
       this.getPaintings();
