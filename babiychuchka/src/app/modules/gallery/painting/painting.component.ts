@@ -17,13 +17,14 @@ export class PaintingComponent implements OnInit {
 
   public ngOnInit() {
     this.galleryService.getPaintings();
-
     this.getPaintingId();
     this.getPaintinById(this.paintingId);
   }
 
   public getPaintingId(): void {
-    this.route.paramMap.subscribe((params: ParamMap) => (this.paintingId = String(params.get('id'))));
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.paintingId = String(params.get('id'));
+    });
   }
 
   public getPaintinById(id: string): void {
@@ -40,7 +41,7 @@ export class PaintingComponent implements OnInit {
   }
 
   public onDelete(): void {
-    this.galleryService.deletePaintings(this.paintingId);
+    this.galleryService.deletePainting(this.paintingId);
     this.router.navigate(['/gallery'], { relativeTo: this.route });
   }
 
