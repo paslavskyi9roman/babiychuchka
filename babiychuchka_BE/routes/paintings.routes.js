@@ -3,7 +3,7 @@ const Painting = require('../models/Painting');
 
 const router = express.Router();
 
-router.post('/api/paintings', (req, res, next) => {
+router.post('', (req, res, next) => {
   const painting = new Painting({
     title: req.body.title,
     id: req.body.id,
@@ -50,6 +50,7 @@ router.get('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   Painting.deleteOne({ id: req.params.id }).then((result) => {
+    console.log(result);
     res.status(200).json({ message: 'Painting deleted' });
   });
 });
