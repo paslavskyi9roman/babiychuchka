@@ -55,7 +55,7 @@ export class GalleryService {
   }
 
   public deletePainting(paintingId: string): void {
-    this.http.delete(`${this.url}/paintings` + paintingId).subscribe(() => {
+    this.http.delete(`${this.url}/paintings/` + paintingId).subscribe(() => {
       const updatedPaintings = this.paintings.filter((painting) => painting.id !== paintingId);
       this.paintings = updatedPaintings;
       this.paintingsStorage$.next([...this.paintings]);
