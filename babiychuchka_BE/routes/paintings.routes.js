@@ -18,12 +18,12 @@ router.post('', (req, res, next) => {
 });
 
 router.put('/:id', (req, res, next) => {
-  const painting = new Painting({
+  const painting = {
     title: req.body.title,
     description: req.body.description,
     imgUrl: req.body.imgUrl,
     available: req.body.available,
-  });
+  };
   Painting.updateOne({ id: req.params.id }, painting).then((result) => {
     res.status(200).json({ message: 'Painting updated successfully' });
   });

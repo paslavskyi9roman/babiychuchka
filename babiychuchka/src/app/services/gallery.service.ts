@@ -49,8 +49,12 @@ export class GalleryService {
   }
 
   public editPainting(painting: Painting): void {
-    this.http.put(`${this.url}/paintings` + painting.id, painting).subscribe((response) => {
-      console.log(response);
+    this.http.put(`${this.url}/paintings/` + painting.id, painting).subscribe((response) => {
+      const updatedPaintings = [...this.paintings];
+      const oldPostIndex = updatedPaintings.findIndex((p) => p.id === painting.id);
+      updatedPaintings[oldPostIndex] = painting;
+      this.paintings = updatedPaintings;
+      this.paintingsStorage$.next([...this.paintings]);
     });
   }
 
