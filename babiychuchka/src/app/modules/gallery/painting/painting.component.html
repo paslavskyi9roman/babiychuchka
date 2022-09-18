@@ -5,7 +5,7 @@
     <img [src]="painting.imgUrl" alt="painting.title" />
     <div class="text">
       <div>
-        <p>{{ painting.available ? 'Avaible' : 'Sold' }}</p>
+        <p>{{ painting.available ? 'Available' : 'Sold' }}</p>
         <p class="description">{{ painting.description }}</p>
         <button class="common-btn edit" (click)="toggleDrawer()">{{ drawerState ? 'close' : 'edit' }}</button>
         <button class="common-btn delete" (click)="confirmDelete()">delete</button>

@@ -43,14 +43,13 @@ router.get('/:id', (req, res, next) => {
     if (painting) {
       res.status(200).json(painting);
     } else {
-      res.status(404).json({ message: 'Painting not found' });
+      res.status(404).json({ message: 'Painting not found!' });
     }
   });
 });
 
 router.delete('/:id', (req, res, next) => {
   Painting.deleteOne({ id: req.params.id }).then((result) => {
-    console.log(result);
     res.status(200).json({ message: 'Painting deleted' });
   });
 });

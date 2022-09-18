@@ -17,7 +17,7 @@ export class PaintingComponent implements OnInit {
 
   public ngOnInit() {
     this.getPaintingId();
-    this.painting = this.galleryService.getPaintinById(this.paintingId) as Painting;
+    this.painting = this.galleryService.getPaintingById(this.paintingId) as Painting;
   }
 
   public getPaintingId(): void {

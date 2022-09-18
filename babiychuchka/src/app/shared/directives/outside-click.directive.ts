@@ -13,11 +13,9 @@ export class OutsideClickDirective {
   public onDocumentClick(event: MouseEvent): void {
     const targetElement = event.target as HTMLElement;
     const isClickedOutside = !this.elementRef.nativeElement.contains(targetElement);
-    console.log('click');
 
     if (targetElement && isClickedOutside && this.isElementShown) {
       this.clickOutside.emit();
-      console.log('should close');
     }
   }
 }

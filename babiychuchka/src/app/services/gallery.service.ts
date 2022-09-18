@@ -11,6 +11,7 @@ export class GalleryService {
   private paintings: Painting[] = [];
   private paintingsStorage$ = new Subject<Painting[]>();
   public paintings$ = this.paintingsStorage$.asObservable();
+
   private readonly url = `http://localhost:3000/api`;
 
   constructor(private http: HttpClient) {}
@@ -37,8 +38,12 @@ export class GalleryService {
       });
   }
 
-  public getPaintinById(id: string) {
-    return { ...this.paintings.find((p) => p.id === id) };
+  public getPaintingById(id: string) {
+    return { ...this.paintings.find((p: Painting) => p.id === id) };
+  }
+
+  public getPainting(id: string) {
+    return this.http.get(`${this.url}/paintings/` + id);
   }
 
   public addPainting(painting: Painting): void {
@@ -51,7 +56,7 @@ export class GalleryService {
   public editPainting(painting: Painting): void {
     this.http.put(`${this.url}/paintings/` + painting.id, painting).subscribe((response) => {
       const updatedPaintings = [...this.paintings];
-      const oldPostIndex = updatedPaintings.findIndex((p) => p.id === painting.id);
+      const oldPostIndex = updatedPaintings.findIndex((p: Painting) => p.id === painting.id);
       updatedPaintings[oldPostIndex] = painting;
       this.paintings = updatedPaintings;
       this.paintingsStorage$.next([...this.paintings]);
@@ -60,8 +65,7 @@ export class GalleryService {
 
   public deletePainting(paintingId: string): void {
     this.http.delete(`${this.url}/paintings/` + paintingId).subscribe(() => {
-      const updatedPaintings = this.paintings.filter((painting) => painting.id !== paintingId);
-      this.paintings = updatedPaintings;
+      this.paintings = this.paintings.filter((painting: Painting) => painting.id !== paintingId);
       this.paintingsStorage$.next([...this.paintings]);
     });
   }
