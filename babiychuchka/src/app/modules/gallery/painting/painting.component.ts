@@ -17,12 +17,14 @@ export class PaintingComponent implements OnInit {
 
   public ngOnInit() {
     this.getPaintingId();
-    this.painting = this.galleryService.getPaintingById(this.paintingId) as Painting;
   }
 
   public getPaintingId(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.paintingId = String(params.get('id'));
+      this.galleryService.getPainting(this.paintingId).subscribe((data) => {
+        this.painting = data as Painting;
+      });
     });
   }
 
