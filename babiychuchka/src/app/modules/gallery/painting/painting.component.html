@@ -1,7 +1,12 @@
 <section class="wrapper">
   <p routerLink="/gallery">⯇ back</p>
   <h1>{{ painting.title }}</h1>
-  <div class="painting">
+
+  <div *ngIf="isLoading">
+    <p>Loading in progress...</p>
+  </div>
+
+  <div class="painting" *ngIf="!isLoading">
     <img [src]="painting.imgUrl" alt="painting.title" />
     <div class="text">
       <div>

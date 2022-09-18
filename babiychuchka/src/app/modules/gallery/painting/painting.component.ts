@@ -12,6 +12,7 @@ export class PaintingComponent implements OnInit {
   public painting: Painting;
   public paintingId: string;
   public drawerState = false;
+  public isLoading = false;
 
   constructor(private galleryService: GalleryService, private route: ActivatedRoute, private router: Router) {}
 
@@ -20,9 +21,12 @@ export class PaintingComponent implements OnInit {
   }
 
   public getPaintingId(): void {
+    this.isLoading = true;
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.paintingId = String(params.get('id'));
+
       this.galleryService.getPainting(this.paintingId).subscribe((data) => {
+        this.isLoading = false;
         this.painting = data as Painting;
       });
     });
