@@ -22,5 +22,5 @@
   </div>
 </section>
 <div [class.openDrawer]="drawerState" class="drawer">
-  <app-edit-painting [painting]="painting"></app-edit-painting>
+  <app-edit-painting [painting]="painting" (closeDrawer)="toggleDrawer()"></app-edit-painting>
 </div>

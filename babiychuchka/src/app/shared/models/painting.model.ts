@@ -7,5 +7,5 @@ export interface Painting {
 }
 
 export interface PaintingResponse extends Painting {
-  _id: any;
+  _id: string;
 }

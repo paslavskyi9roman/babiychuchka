@@ -16,7 +16,7 @@ export class GalleryService {
 
   constructor(private http: HttpClient) {}
 
-  public getPaintings() {
+  public getPaintings(): void {
     this.http
       .get<{ message: string; paintings: PaintingResponse[] }>(`${this.url}/paintings`)
       .pipe(

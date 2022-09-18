@@ -9,7 +9,7 @@ import { Painting } from 'src/app/shared/models/painting.model';
   styleUrls: ['./painting.component.scss'],
 })
 export class PaintingComponent implements OnInit {
-  public painting: Painting;
+  public painting: any;
   public paintingId: string;
   public drawerState = false;
   public isLoading = false;
@@ -40,7 +40,7 @@ export class PaintingComponent implements OnInit {
   }
 
   public onDelete(): void {
-    this.galleryService.deletePainting(this.painting.id);
+    this.galleryService.deletePainting(this.painting._id);
     this.router.navigate(['/gallery'], { relativeTo: this.route });
   }
 

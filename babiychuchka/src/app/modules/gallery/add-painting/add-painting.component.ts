@@ -8,7 +8,7 @@ import { GalleryService } from 'src/app/services/gallery.service';
   styleUrls: ['./add-painting.component.scss'],
 })
 export class AddPaintingComponent implements OnInit {
-  paintingForm: FormGroup;
+  public paintingForm: FormGroup;
 
   constructor(private fb: FormBuilder, private galleryService: GalleryService) {}
 

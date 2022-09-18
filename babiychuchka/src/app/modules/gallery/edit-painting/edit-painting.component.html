@@ -1,12 +1,12 @@
 <p>edit painting</p>
 
-<form action="">
-  <input type="text" [value]="painting.title" />
-  <input type="text" [value]="painting.description" />
-  <input type="text" [value]="painting.imgUrl" />
-  <input type="text" [value]="painting.available" />
+<form [formGroup]="paintingForm">
+  <input type="text" formControlName="title" [value]="painting.title" />
+  <input type="text" formControlName="description" [value]="painting.description" />
+  <input type="text" formControlName="imgUrl" [value]="painting.imgUrl" />
+  <input type="text" formControlName="isAvaible" [value]="painting.available" />
   <div class="buttons">
-    <button (click)="editPainting(painting)" class="common-btn">edit</button>
+    <button (click)="editPainting()" class="common-btn">edit</button>
     <button class="common-btn cancel">cancel</button>
   </div>
 </form>
