@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -13,7 +12,7 @@ import { Painting } from 'src/app/shared/models/painting.model';
 })
 export class EditPaintingComponent implements OnInit {
   @Input() public painting: any;
-  @Output() closeDrawer = new EventEmitter();
+  @Output() public closeDrawer = new EventEmitter();
   public paintingForm: FormGroup;
 
   constructor(

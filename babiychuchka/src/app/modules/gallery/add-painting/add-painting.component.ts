@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GalleryService } from 'src/app/services/gallery.service';
 
@@ -9,6 +9,7 @@ import { GalleryService } from 'src/app/services/gallery.service';
 })
 export class AddPaintingComponent implements OnInit {
   public paintingForm: FormGroup;
+  @Output() public closeDrawer = new EventEmitter();
 
   constructor(private fb: FormBuilder, private galleryService: GalleryService) {}
 
@@ -29,5 +30,6 @@ export class AddPaintingComponent implements OnInit {
     newPainting.available = true;
     this.galleryService.addPainting(newPainting);
     this.paintingForm.reset();
+    this.closeDrawer.emit();
   }
 }

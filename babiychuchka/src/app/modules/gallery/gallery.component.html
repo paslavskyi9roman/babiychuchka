@@ -11,5 +11,5 @@
   </div>
 </section>
 <div [class.openDrawer]="drawerState" class="drawer">
-  <app-add-painting></app-add-painting>
+  <app-add-painting (closeDrawer)="toggleDrawer()"></app-add-painting>
 </div>
