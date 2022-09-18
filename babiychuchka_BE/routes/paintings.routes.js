@@ -11,20 +11,23 @@ router.post('', (req, res, next) => {
     imgUrl: req.body.imgUrl,
     available: req.body.available,
   });
-  painting.save();
-  res.status(201).json({
-    message: 'Painting added successfully',
+  painting.save().then((painting) => {
+    res.status(201).json({
+      message: 'Painting added successfully',
+      id: painting._id,
+    });
   });
 });
 
 router.put('/:id', (req, res, next) => {
   const painting = {
+    _id: req.body.id,
     title: req.body.title,
     description: req.body.description,
     imgUrl: req.body.imgUrl,
     available: req.body.available,
   };
-  Painting.updateOne({ id: req.params.id }, painting).then((result) => {
+  Painting.updateOne({ _id: req.params.id }, painting).then((result) => {
     res.status(200).json({ message: 'Painting updated successfully' });
   });
 });
@@ -49,7 +52,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.delete('/:id', (req, res, next) => {
-  Painting.deleteOne({ id: req.params.id }).then((result) => {
+  Painting.deleteOne({ _id: req.params.id }).then((result) => {
     res.status(200).json({ message: 'Painting deleted' });
   });
 });

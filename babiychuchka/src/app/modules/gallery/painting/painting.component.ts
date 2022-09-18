@@ -34,7 +34,7 @@ export class PaintingComponent implements OnInit {
   }
 
   public onDelete(): void {
-    this.galleryService.deletePainting(this.paintingId);
+    this.galleryService.deletePainting(this.painting.id);
     this.router.navigate(['/gallery'], { relativeTo: this.route });
   }
 

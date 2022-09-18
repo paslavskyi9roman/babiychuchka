@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Subject } from 'rxjs';
 
-import { Painting } from '../shared/models/painting.model';
+import { Painting, PaintingResponse } from '../shared/models/painting.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,12 +18,12 @@ export class GalleryService {
 
   public getPaintings() {
     this.http
-      .get<{ message: string; paintings: Painting[] }>(`${this.url}/paintings`)
+      .get<{ message: string; paintings: PaintingResponse[] }>(`${this.url}/paintings`)
       .pipe(
         map((postData) => {
           return postData.paintings.map((paintings) => {
             return {
-              id: paintings.id,
+              id: paintings._id,
               title: paintings.title,
               description: paintings.description,
               available: paintings.available,
@@ -47,7 +47,8 @@ export class GalleryService {
   }
 
   public addPainting(painting: Painting): void {
-    this.http.post<{ message: string }>(`${this.url}/paintings`, painting).subscribe(() => {
+    this.http.post<{ message: string; id: string }>(`${this.url}/paintings`, painting).subscribe((response) => {
+      painting.id = response.id;
       this.paintings.push(painting);
       this.paintingsStorage$.next([...this.paintings]);
     });

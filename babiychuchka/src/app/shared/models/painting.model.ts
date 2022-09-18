@@ -5,3 +5,7 @@ export interface Painting {
   available: boolean;
   imgUrl: string;
 }
+
+export interface PaintingResponse extends Painting {
+  _id: any;
+}
